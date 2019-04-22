@@ -51,16 +51,16 @@ def main():
     args = sys.argv[1:]
     
     if len(args) != 1:
-       print('Usage: {} ONE WORD'.format(os.path.basename(sys.argv[])))
+       print('Usage: {} ONE WORD'.format(os.path.basename(sys.argv[0])))
   
     word = args[0]
 
     reverse = ''.join(reversed(word))
 
-    if (word == rev):
-       return True
+    if (word == reverse):
+        print('{} is a palindrome'.format(reverse))
     else:
-        return False
+        print('{}: {} is not a palindrome'.format(word, reverse))
 
  
 #  args = get_args()
