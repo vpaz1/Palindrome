@@ -5,13 +5,13 @@ from subprocess import getstatusoutput, getoutput
 import os.path
 import re
 
-hello = './palindrome.py'
+palindrome = './palindrome.py'
 #counter = './vowel_counter.py'
 
 
 def test_exists_hello():
     """scripts exist"""
-    assert os.path.exists(hello)
+    assert os.path.exists(palindrome) 
 
 
 #def test_exists_counter():
