@@ -1,5 +1,5 @@
 # Palindrome
-Check if a word is a palindrome by checking one word at a time or checking words in a text file.
+Check if a word is a palindrome by checking one word at a time or checking a list of words.
 ```
 $ ./palindrome.py 
 usage: palindrome.py [-h] str [str ...]
