@@ -6,57 +6,24 @@ import os.path
 import re
 
 palindrome = './palindrome.py'
-#counter = './vowel_counter.py'
-
 
 def test_exists_hello():
     """scripts exist"""
     assert os.path.exists(palindrome) 
 
+def test_usage_hello():
+    """usage"""
+    (retval, out) = getstatusoutput(palindrome)
+    assert retval > 0
+    assert re.match("usage", out, re.IGNORECASE)
 
-#def test_exists_counter():
- #   """scripts exist"""
-  #  assert os.path.exists(counter)
+def test_hello():
+    """runs palindrome"""
+    out1 = getoutput(palindrome + ' hello')
+    assert out1.rstrip() == 'hello: olleh is not a palindrome'
 
-#def test_usage_hello():
- #   """usage"""
-  #  (retval, out) = getstatusoutput(hello)
-   # assert retval > 0
-   # assert re.match("usage", out, re.IGNORECASE)
+    out2 = getoutput(palindrome + ' aibohphobia alula RAceCAr')
+    assert out2.rstrip() == 'aibohphobia is a palindrome\nalula is a palindrome\nRAceCAr: rACecAR is not a palindrome'
 
-#def test_usage_counter():
- #   """usage"""
- #   (retval, out) = getstatusoutput(counter)
- #   assert retval > 0
- #   assert re.match("usage", out, re.IGNORECASE)
-
-
-#def test_hello():
- #   """runs hello"""
- #   out1 = getoutput(hello + ' Alice')
- #   assert out1.rstrip() == 'Hello to the 1 of you: Alice!'
-
- #   out2 = getoutput(hello + ' Mike Carol')
- #   assert out2.rstrip() == 'Hello to the 2 of you: Mike and Carol!'
-
-#    out3 = getoutput(hello + ' Greg Peter Bobby Marcia Jane Cindy')
- #   assert out3.rstrip(
-  #  ) == 'Hello to the 6 of you: Greg, Peter, Bobby, Marcia, Jane, and Cindy!'
-
-
-#def test_counter():
- #   """runs counter"""
-  #  out1 = getoutput(counter + ' if')
-   # assert out1.rstrip() == 'There is 1 vowel in "if."'
-
- #   out2 = getoutput(counter + ' foo')
-  #  assert out2.rstrip() == 'There are 2 vowels in "foo."'
-
-   # out3 = getoutput(counter + ' covfefe')
-   # assert out3.rstrip() == 'There are 3 vowels in "covfefe."'
-
-   # out4 = getoutput(counter + ' YYZ')
-   # assert out4.rstrip() == 'There are 0 vowels in "YYZ."'
-
-   # out5 = getoutput(counter + ' HELLO')
-   # assert out5.rstrip() == 'There are 2 vowels in "HELLO."'
+    out3 = getoutput(palindrome + ' radar, rotavator, solos testsetlevel madam ')
+    assert out3.rstrip() == 'radar,: ,radar is not a palindrome\nrotavator,: ,rotavator is not a palindrome\nsolos is a palindrome\ntestsetlevel: leveltestset is not a palindrome\nmadam is a palindrome'
