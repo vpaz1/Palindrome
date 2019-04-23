@@ -5,7 +5,7 @@ Date   : 2019-04-21
 Purpose: palindrome
 """
 
-#import argparse
+import argparse
 import sys
 import os
 #import logging
@@ -14,21 +14,14 @@ import os
 def get_args():
     """get command-line arguments"""
     parser = argparse.ArgumentParser(
-        description='Hamming distance',
+        description='palindrome',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
         'positional',
-        help='File inputs',
-        metavar='FILE',
-        nargs=1)
-
-   # parser.add_argument(
-    #    '-d',
-     #   '--debug',
-      #  help='Debug',
-       # default=False,
-       # action='store_true')
+        help='list of words',
+        metavar='str',
+        nargs='+')
 
     return parser.parse_args()
 
@@ -48,43 +41,24 @@ def die(msg='Something bad happened'):
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
-    args = sys.argv[1:]
+
+    args = get_args()
+    words = args.positional
     
-    if len(args) != 1:
-       print('Usage: {} ONE WORD'.format(os.path.basename(sys.argv[0])))
-  
-    word = args[0]
-
-    reverse = ''.join(reversed(word))
-
-    if (word == reverse):
-        print('{} is a palindrome'.format(reverse))
-    else:
-        print('{}: {} is not a palindrome'.format(word, reverse))
-
- 
-#  args = get_args()
- #   file_input = args.positional
-  #  dists = 0
-
-   # logging.basicConfig(
-    #     filename='.log',
-     #    filemode='w',
-      #   level=logging.DEBUG if args.debug else logging.CRITICAL
-    #)
-   # logging.debug('file1 = {}, file2 = {}'.format(file_input[0],file_input[1]))
+    for word in words:
+        if len(word) is 0:
+            die('Must input one word')
+        else:
+            reverse = ''.join(reversed(word))
+            if (word == reverse):
+                print('{} is a palindrome'.format(reverse))
+            else:
+                print('{}: {} is not a palindrome'.format(word, reverse))
 
 
-  #  for filenames in file_input:
-   #     if not os.path.isfile(filenames):
-    #        die('"{}" is not a file'.format(filenames))
-    
-     #   else:
-      #      with open(file_input[0]) as lines1, open(file_input[1]) as lines2:
-       #         content1 = lines1.readlines()
-        #        content2 = lines2.readlines()
-   
-
+   #if more than one word is given (sentence):
+    #  sen_join = ''.join(sentence)
+       
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
