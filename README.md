@@ -1,5 +1,5 @@
 # Palindrome
-Check if a word is a palindrome by checking one word at a time or checking a list of words.
+Check if a word is a palindrome (a word, phrase, or sequence that reads the same backward as forward) by checking one word at a time or checking a list of words.
 ```
 $ ./palindrome.py 
 usage: palindrome.py [-h] str [str ...]
