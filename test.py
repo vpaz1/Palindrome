@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""tests for hello.py, vowel_counter.py"""
+"""tests palindrome.py"""
 
 from subprocess import getstatusoutput, getoutput
 import os.path
